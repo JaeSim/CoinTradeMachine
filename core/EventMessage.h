@@ -4,11 +4,12 @@ class EventMessage {
     private:
         int id;
         int what;
-        char *data;
+        void *data;
     public:
-        char* getData() { return data; };
+        void* getData() { return data; };
         EventMessage() {};
         EventMessage(int id);
-        EventMessage(int id, int what, char* data);
+        EventMessage(int id, int what, void* data);
+        EventMessage createEventMessage(int what, void* data);
         ~EventMessage() {};
 };

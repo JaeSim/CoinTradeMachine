@@ -12,7 +12,8 @@ int main()
 void start() 
 {
     cout<<"CoinTradingBot process running"<<endl;
-    EventMessage *evt = new EventMessage(1, 1, "test");
+    char * str = "test";
+    EventMessage *evt = new EventMessage(1, 1, (void*)str);
     int cnt = 0;
     while(1) {
         if (cnt > 10 ) break;
