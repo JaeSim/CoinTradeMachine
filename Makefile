@@ -1,18 +1,33 @@
 CC = g++
 
 TARGET = CoinTradingBot
+OBJDIR = obj
+SRCS := $(shell find . -name '*.cpp')
+SRCDIRS := $(shell find . -name '*.cpp' -exec dirname {} \; | uniq)
 
+OBJS = $(addprefix $(OBJDIR)/, $(patsubst %.cpp, %.o, $(SRCS)))
 
-all : $(TARGET)
+all : buildrepo $(OBJDIR) $(TARGET)
 
-$(TARGET) : CoinTradingBot.o EventMessage.o
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(TARGET) : $(OBJS)
 	$(CC) -o $@ $^
+	
+$(OBJDIR)/%.o : %.cpp
+	$(CC) -o $@ -c $<
 
-CointTradingBot.o : CoinTradingBot.cpp
-	$(CC) -c -o $@ $^ 
+buildrepo:
+	@$(call make-repo)
 
-EventMessage.o : ./core/EventMessage.cpp
-	$(CC) -c -o $@ $^
-
+define make-repo
+   for dir in $(SRCDIRS); \
+   do \
+    mkdir -p $(OBJDIR)/$$dir; \
+   done
+endef
+	
 clean :
-	rm *.o CoinTradingBot
+	rm -rf $(OBJDIR)
+	rm $(TARGET)
