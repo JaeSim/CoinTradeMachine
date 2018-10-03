@@ -4,6 +4,7 @@ TARGET = CoinTradingBot
 OBJDIR = obj
 SRCS := $(shell find . -name '*.cpp')
 SRCDIRS := $(shell find . -name '*.cpp' -exec dirname {} \; | uniq)
+INC := -I./core
 
 OBJS = $(addprefix $(OBJDIR)/, $(patsubst %.cpp, %.o, $(SRCS)))
 
@@ -13,10 +14,10 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 $(TARGET) : $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) $(INC) -o $@ $^
 	
 $(OBJDIR)/%.o : %.cpp
-	$(CC) -o $@ -c $<
+	$(CC) $(INC) -o $@ -c $<
 
 buildrepo:
 	@$(call make-repo)
