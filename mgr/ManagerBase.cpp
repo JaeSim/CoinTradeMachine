@@ -1,6 +1,7 @@
 #include "ManagerBase.h"
 #include "InputManager.h"
 #include "DisplayManager.h"
+#include <iterator>
 
 ManagerBase::ManagerBase() {
     isIntialized = false;
@@ -8,8 +9,19 @@ ManagerBase::ManagerBase() {
 
 void ManagerBase::init()
 {
-    InputManager* mInputManager = new InputManager();
-    DisplayManager* mDisplayManager = new DisplayManager();
+    mManagerMap.clear();
+    mInputManager = new InputManager();
+    mDisplayManager = new DisplayManager();
+
+    mManagerMap.insert(make_pair(InputManager::name, mInputManager));
+    mManagerMap.insert(make_pair(DisplayManager::name, mDisplayManager));
+
+    cout<<"Manager List is"<<mManagerMap.size()<<endl;
+    map <string, Manager*>::iterator it;
+    for (it = mManagerMap.begin(); it != mManagerMap.end(); it++) {
+    	it->second->start();
+    }
+    isIntialized = true;
 }
 
 ManagerBase::~ManagerBase() {

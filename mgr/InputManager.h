@@ -1,11 +1,18 @@
 #ifndef __INPUTMANAGER_H__
 #define __INPUTMANAGER_H__
-#include "Singleton.h"
+#include "Manager.h"
+#include <iostream>
+#include <string>
 
-class InputManager : public Singleton<InputManager>
+using namespace std;
+
+class InputManager : public Manager
 {
 public:
-    InputManager() {};
+	static const string name;
+    void stop();
+    void start();
+    InputManager();
     ~InputManager() {};
 };
 #endif

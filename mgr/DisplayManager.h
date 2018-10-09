@@ -1,11 +1,18 @@
 #ifndef __DISPLAYMANAGER_H__
 #define __DISPLAYMANAGER_H__
-#include "Singleton.h"
+#include "Manager.h"
+#include <iostream>
+#include <string>
 
-class DisplayManager : public Singleton<DisplayManager>
+using namespace std;
+
+class DisplayManager : public Manager
 {
 public:
-    DisplayManager() {};
+	static const string name;
+    void stop();
+    void start();
+    DisplayManager();
     ~DisplayManager() {};
 };
 #endif

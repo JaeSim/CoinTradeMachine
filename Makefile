@@ -6,6 +6,7 @@ SRCS := $(shell find . -name '*.cpp')
 SRCDIRS := $(shell find . -name '*.cpp' -exec dirname {} \; | uniq)
 INC := -I./core
 
+
 OBJS = $(addprefix $(OBJDIR)/, $(patsubst %.cpp, %.o, $(SRCS)))
 
 all : buildrepo $(OBJDIR) $(TARGET)
