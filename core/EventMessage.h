@@ -12,7 +12,7 @@ public:
     EventMessage() {};
     EventMessage(int id);
     EventMessage(int id, int what, void* data);
-    EventMessage createEventMessage(int what, void* data);
+    static EventMessage createEventMessage(int what, void* data);
     ~EventMessage() {};
 };
 #endif

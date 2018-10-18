@@ -7,7 +7,7 @@ DisplayManager::DisplayManager() {
 }
 
 void DisplayManager::start() {
-    cout<<"start "<<endl;
+    cout<<"start "<<name<<endl;
 }
 
 void DisplayManager::stop() {

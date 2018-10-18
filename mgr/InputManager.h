@@ -3,6 +3,7 @@
 #include "Manager.h"
 #include <iostream>
 #include <string>
+#include <thread>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ public:
 	static const string name;
     void stop();
     void start();
+    void inputInterrupt();
     InputManager();
     ~InputManager() {};
 };

@@ -5,7 +5,7 @@ OBJDIR = obj
 SRCS := $(shell find . -name '*.cpp')
 SRCDIRS := $(shell find . -name '*.cpp' -exec dirname {} \; | uniq)
 INC := -I./core
-
+CFLAGS += -std=gnu++0x -pthread
 
 OBJS = $(addprefix $(OBJDIR)/, $(patsubst %.cpp, %.o, $(SRCS)))
 
@@ -15,10 +15,10 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 $(TARGET) : $(OBJS)
-	$(CC) $(INC) -o $@ $^
+	$(CC) $(INC) $(CFLAGS) -o $@ $^
 	
 $(OBJDIR)/%.o : %.cpp
-	$(CC) $(INC) -o $@ -c $<
+	$(CC) $(INC) $(CFLAGS) -o $@ -c $<
 
 buildrepo:
 	@$(call make-repo)
