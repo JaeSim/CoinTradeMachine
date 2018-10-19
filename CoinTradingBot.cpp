@@ -1,6 +1,6 @@
 #include <iostream>
 #include "EventMessage.h"
-#include "mgr/ManagerBase.h"
+#include "ManagerBase.h"
 
 using namespace std;
 void startBot();
