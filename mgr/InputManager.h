@@ -10,7 +10,7 @@ using namespace std;
 class InputManager : public Manager
 {
 public:
-	static const string name;
+    static const string name;
     void stop();
     void start();
     void inputInterrupt();

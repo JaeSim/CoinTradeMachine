@@ -9,7 +9,7 @@ using namespace std;
 class DisplayManager : public Manager
 {
 public:
-	static const string name;
+    static const string name;
     void stop();
     void start();
     DisplayManager();
