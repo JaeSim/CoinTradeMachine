@@ -15,7 +15,7 @@ $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 $(TARGET) : $(OBJS)
-	$(CC) $(INC) $(CFLAGS) -o $@ $^
+	$(CC) $(INC) $(CFLAGS) -lcurl -o $@ $^
 	
 $(OBJDIR)/%.o : %.cpp
 	$(CC) $(INC) $(CFLAGS) -o $@ -c $<
